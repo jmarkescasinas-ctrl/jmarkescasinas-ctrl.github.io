@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Resume & Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --surface2: #F4F3F0;
+  --border: rgba(28, 27, 34, 0.08);
+  --border2: rgba(28, 27, 34, 0.15);
+  --text: #1C1B22;
+  --muted: #6B6880;
+  --accent: #5A4FCF;
+  --accent2: #1D9E75;
+  --accent3: #D4537E;
+  --gold: #BA7517;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 20px;
+  background: rgba(250, 250, 248, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+nav a:hover {
+  color: var(--accent);
+  background: rgba(90, 79, 207, 0.08);
+  border-color: rgba(90, 79, 207, 0.2);
+}
+
+/* ─── MAIN LAYOUT ─── */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 24px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--accent2);
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-title {
+  font-size: clamp(16px, 3vw, 20px);
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 32px;
+  letter-spacing: 0.01em;
+}
+
+.hero-desc {
+  max-width: 520px;
+  color: rgba(28, 27, 34, 0.62);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 3px rgba(90, 79, 207, 0.25);
+}
+
+.btn-primary:hover {
+  background: #4A3FB8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(90, 79, 207, 0.3);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  background: rgba(90, 79, 207, 0.06);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 60px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 40px; height: 1px;
+  background: linear-gradient(to right, var(--muted), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ─── SECTION HEADERS ─── */
+.section {
+  padding: 80px 0 40px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 48px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── SKILLS GRID ─── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: default;
+  box-shadow: 0 1px 2px rgba(28, 27, 34, 0.04);
+}
+
+.skill-card:hover {
+  background: var(--surface2);
+  border-color: var(--border2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(28, 27, 34, 0.06);
+}
+
+.skill-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skill-dot.purple { background: var(--accent); }
+.skill-dot.teal   { background: var(--accent2); }
+.skill-dot.pink   { background: var(--accent3); }
+.skill-dot.gold   { background: var(--gold); }
+
+/* ─── EXPERIENCE TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -32px; top: 8px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(90, 79, 207, 0.15);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.timeline-role {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.timeline-period {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent2);
+  background: rgba(29, 158, 117, 0.08);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(29, 158, 117, 0.2);
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.timeline-company {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.timeline-body {
+  color: rgba(28, 27, 34, 0.6);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.timeline-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline-body ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.timeline-body ul li::before {
+  content: '→';
+  color: var(--accent);
+  font-size: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── PROJECTS ─── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(28, 27, 34, 0.05);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.project-card:hover {
+  background: var(--surface2);
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(28, 27, 34, 0.08);
+}
+
+.project-card:hover::before { opacity: 1; }
+
+.project-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(90, 79, 207, 0.08);
+  border: 1px solid rgba(90, 79, 207, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.project-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.project-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.project-tag {
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: rgba(90, 79, 207, 0.07);
+  border: 1px solid rgba(90, 79, 207, 0.18);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin: 3px 3px 0 0;
+}
+
+/* ─── CONTACT ─── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.contact-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(28, 27, 34, 0.03);
+}
+
+.contact-item:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+
+.contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.contact-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+footer span {
+  color: var(--accent3);
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+/* ─── ANIMATION ON LOAD ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.25s; }
+.fade-in:nth-child(3) { animation-delay: 0.4s; }
+.fade-in:nth-child(4) { animation-delay: 0.55s; }
+.fade-in:nth-child(5) { animation-delay: 0.7s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  nav { gap: 2px; padding: 10px 12px; }
+  nav a { font-size: 12px; padding: 5px 10px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .projects-grid { grid-template-columns: 1fr; }
+}
+.hero-profile-wrapper {
+  display: flex;
+  align-items: flex-start; /* aligns pic top with name */
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.hero-pic-col {
+  flex-shrink: 0;
+}
+
+.hero-profile-pic {
+  width: 300px;       /* bigger */
+  height: 360px;      /* taller to match text block height */
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 8px;
+  display: block;
+}
+
+.hero-text-col {
+  flex: 1;
+  min-width: 260px;
+}
+
+@media (max-width: 600px) {
+  .hero-profile-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-profile-pic {
+    width: 100%;
+    height: 260px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="about">
+
+  <div class="hero-profile-wrapper fade-in">
+
+    <!-- Left: Profile Picture -->
+    <div class="hero-pic-col">
+      <img 
+        src="Profile.png" 
+        alt="Jay Mark C. Escasinas"
+        class="hero-profile-pic"
+      />
+    </div>
+
+    <!-- Right: Text Content -->
+    <div class="hero-text-col">
+      <div class="fade-in">
+        <h1>Jay Mark <em>C.</em><br>Escasinas</h1>
+      </div>
+      <div class="fade-in">
+        <p class="hero-title">IT Professional</p>
+      </div>
+      <div class="fade-in">
+        <p class="hero-desc">
+          A dedicated IT professional with hands-on experience in system administration,
+          Active Directory, and technical support. Passionate about solving complex
+          infrastructure challenges and improving system efficiency for growing organizations.
+        </p>
+      </div>
+      <div class="fade-in">
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get in touch →</a>
+          <a href="#experience" class="btn-ghost">View experience</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+  <div class="divider"></div>
+
+  <!-- ─── SKILLS ─── -->
+  <section class="section" id="skills">
+    <div class="section-label">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="skill-dot purple"></span>Active Directory</div>
+      <div class="skill-card"><span class="skill-dot purple"></span>Windows Server</div>
+      <div class="skill-card"><span class="skill-dot teal"></span>PowerShell</div>
+      <div class="skill-card"><span class="skill-dot teal"></span>GPO Management</div>
+      <div class="skill-card"><span class="skill-dot gold"></span>DNS &amp; DHCP</div>
+      <div class="skill-card"><span class="skill-dot gold"></span>Office 365</div>
+      <div class="skill-card"><span class="skill-dot pink"></span>Networking</div>
+      <div class="skill-card"><span class="skill-dot pink"></span>IT Helpdesk</div>
+      <div class="skill-card"><span class="skill-dot teal"></span>Endpoint Support</div>
+      <div class="skill-card"><span class="skill-dot purple"></span>ITIL Basics</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── EXPERIENCE ─── -->
+  <section class="section" id="experience">
+    <div class="section-label">Experience</div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Helpdesk Engineer</span>
+          <span class="timeline-period">2022 – Present</span>
+        </div>
+        <div class="timeline-company">ContactPoint 360 Philippines · Full-time</div>
+        <div class="timeline-body">
+          <ul>
+            <li>Provide technical support to users both onsite and remotely.</li>
+            <li>Perform computer operating system installation, configuration, and hardware maintenance.</li>
+            <li>Troubleshoot and resolve hardware, software, and network-related issues.</li>
+            <li>Administer Microsoft 365 licenses and manage Keeper password management accounts.</li>
+	    <li>Assist with structured cabling projects and the installation and configuration of network devices.</li>
+	    <li>Document issues and solutions to ensure efficient incident resolution and knowledge sharing.</li>
+	    <li>Collaborate with internal teams to maintain system reliability and deliver high-quality IT support.</li>
+	    <li>Develop and maintain PowerShell scripts to automate routine administrative tasks, user account management and reducing manual effort.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Technician</span>
+          <span class="timeline-period">01/2021 – 12/2021</span>
+        </div>
+        <div class="timeline-company"> GW Fortune Builders Inc. · Full-time</div>
+        <div class="timeline-body">
+          <ul>
+            <li>Installed, configured, and maintained IT infrastructure and security systems, including CCTV and access control systems.</li>
+	   <li>Provided onsite and remote technical support for hardware, software, and peripheral devices.</li>
+           <li>Managed IT asset inventory, workstation deployment, and equipment lifecycle processes.</li>
+           <li>Performed structured cabling and installed, configured, and maintained network devices and connectivity solutions.</li>
+	   <li>Diagnosed and resolved hardware, software, and network-related issues to ensure system availability and reliability.</li>
+	   <li>Assisted users with system setup, troubleshooting, and technical support requests.</li>
+	   <li>Documented IT assets, configurations, and support activities to maintain accurate records.</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Desktop Support </span>
+          <span class="timeline-period">07/2019 – 08/2020</span>
+        </div>
+        <div class="timeline-company">BPOSEATS.com · Full-time</div>
+        <div class="timeline-body">
+          <ul>
+            <li>Provided technical support to resolve network, hardware, and software issues for multiple client offices.</li>
+           <li>Supported desktop hardware and software deployments, including installations, upgrades, relocations, and configuration changes.</li>
+           <li>Installed, configured, and maintained network hardware and software to ensure optimal performance and reliability.</li>
+           <li>Monitored network infrastructure to ensure security, availability, and appropriate user access.</li>
+          <li>Performed structured network cabling, cable termination, and connectivity testing.</li>
+      <li>Configured routers and firewalls to meet business requirements and enhance network security.</li>
+<li>Troubleshot and resolved network connectivity issues to minimize downtime and maintain service continuity.</li>
+<li>Documented network configurations, changes, and technical procedures to support efficient operations and maintenance.</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Specialist</span>
+          <span class="timeline-period">7/2018 - 6/2019</span>
+        </div>
+        <div class="timeline-company">WinKey Online English · Full-time</div>
+        <div class="timeline-body">
+          <ul>
+            <li>Provided troubleshooting support for computer hardware, software, and system-related issues.</li>
+<li>Supported desktop hardware and software deployments, including installations, upgrades, relocations, and configuration changes.</li>
+<li>Provided application support and troubleshooting for ESL software tools.</li>
+<li>Installed, configured, and maintained network hardware and software to ensure system reliability and performance.</li>
+<li>Analyzed and isolated network and computer issues to minimize downtime and restore services efficiently.</li>
+<li>Installed, updated, and maintained Windows operating systems and software applications.</li>
+<li>Managed user accounts and data within CRM systems to support business operations.</li>
+<li>Created and edited video, photo, and audio content using multimedia editing tools.</li>
+<li>Documented technical issues, resolutions, and system configurations to support knowledge sharing and operational efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">Jr. IT System Admin Support </span>
+          <span class="timeline-period">4/2017 - 7/2018</span>
+        </div>
+        <div class="timeline-company">iTECH-RAR Solutions Inc. · Full-time</div>
+        <div class="timeline-body">
+          <ul>
+            <li>Provided technical support and troubleshooting for internet connectivity issues to ensure service reliability and customer satisfaction.</li>
+<li>Performed fiber optic installation, configuration, testing, and maintenance for residential and business clients.</li>
+<li>Installed, configured, and maintained network hardware and software to support stable and secure operations.</li>
+<li>Analyzed and isolated internet and network-related issues to minimize downtime and restore connectivity efficiently.</li>
+<li>Monitored network infrastructure to ensure security, availability, and optimal performance for authorized users.</li>
+<li>Evaluated and optimized system and network performance to improve reliability and efficiency.</li>
+<li>Administered and maintained firewall solutions, including pfSense and MikroTik, to enforce security policies and manage network traffic.</li>
+<li>Documented network configurations, changes, and technical procedures to support ongoing operations and troubleshooting.</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── PROJECTS ─── -->
+  <section class="section" id="projects">
+    <div class="section-label">Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-icon">⚡</div>
+        <div class="project-title">AD Automation Script</div>
+        <div class="project-desc">
+          Automated bulk user creation, user account disable, user information updates, OU assignment, and group membership
+          using PowerShell — reducing provisioning time by ~80%.
+        </div>
+        <span class="project-tag">PowerShell</span>
+        <span class="project-tag">Active Directory</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔍</div>
+        <div class="project-title"> Microsoft 365 Admin</div>
+        <div class="project-desc">
+          Automated Microsoft 365 license management processes, including license assignment and removal.
+Developed automation workflows to disable user accounts and remove Microsoft Teams access for inactive or terminated users.
+ <span class="project-tag">PowerShell 7</span>
+<span class="project-tag">MS365</span>
+        
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="section" id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">jmarkescasinas@email.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">+63 922 777 2781</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Location</div>
+        <div class="contact-value">Cebu City, Cebu, Philippines</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Downloads</div>
+        <div class="contact-value" style="color: var(--accent2);">Click here to download my CV ✦</div>
+      </div>
+    </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Jay Mark C. Escasinas <span></span></p>
+</footer>
+
+</body>
+</html>
